@@ -1,2 +1,2 @@
 # pyrogram-schedule
-pyrogram-schedule is docker container for arm64 (raspberry pi) based on python 3.8 with installed modules [https://github.com/pyrogram/pyrogram](pyrogram) and [https://github.com/dbader/schedule](schedule)
+pyrogram-schedule is docker container for arm64 (raspberry pi) based on python 3.8 with installed modules [pyrogram](https://github.com/pyrogram/pyrogram) and [schedule](https://github.com/dbader/schedule)
