@@ -5,12 +5,18 @@ pyrogram-schedule is docker container for arm64 (raspberry pi) based on python 3
 You can get docker image at the following location: [pawerak/pyrogram-schedule](https://hub.docker.com/r/pawerak/pyrogram-schedule).
 ## Installing
 ```
-docker pull pawerak/pyrogram-schedule
+docker pull pawerak/pyrogram-schedule:arm64
 ```
 ## Running image
 To run container use command shown below.
 ```
-docker run -d pawerak/pyrogram-schedule
+docker run -d \
+  --name=Telegram_BOT \
+  -e TZ=Europe/Warsaw \
+  -v ~/path/to/scripts:/usr/scripts \
+  -v ~/path/for/session/persist:/usr/local/lib/python3.8/site-packagesv \
+  --restart unless-stopped \
+  pawerak/pyrogram-schedule
 ```
 If you mount both volumes, your login for telegram and scripts will persist container rebuild.
 ## Configuration

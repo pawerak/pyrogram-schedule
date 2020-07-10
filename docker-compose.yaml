@@ -1,8 +1,8 @@
 version: '3'
 services:
-  speedtest:
+  Telegram_Bot:
     container_name: Telegram_BOT
-    image: pawerak/pyrogram-schedule]
+    image: pawerak/pyrogram-schedule
     restart: unless-stopped
     volumes:
       - ~/path/to/scripts:/usr/scripts
