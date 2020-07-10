@@ -1,14 +1,14 @@
 FROM python:3.8-slim
 
 RUN apt-get -y update && \
-    apt-get install -y \
+    apt-get install --no-install-recommends -y \
     build-essential \
     manpages-dev \
     procps \
     python3-dev \
     python3-pip \
     && \
-    apt-get clean
+    rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt ./
 
