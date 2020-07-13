@@ -18,4 +18,3 @@ RUN pip3 install --upgrade pip && \
 RUN rm -frv ./requirements.txt
 RUN mkdir /usr/scripts
 VOLUME /usr/scripts
-VOLUME /usr/local/lib/python3.8/site-packagesv
