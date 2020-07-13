@@ -14,11 +14,10 @@ docker run -d \
   --name=Telegram_BOT \
   -e TZ=Europe/Warsaw \
   -v ~/path/to/scripts:/usr/scripts \
-  -v ~/path/for/session/persist:/usr/local/lib/python3.8/site-packagesv \
   --restart unless-stopped \
   pawerak/pyrogram-schedule
 ```
-If you mount both volumes, your login for telegram and scripts will persist container rebuild.
+If you mount volume, your login for telegram and scripts will persist container rebuild.
 ## Configuration
 ```
 docker exec -it <container_id> /bin/bash
