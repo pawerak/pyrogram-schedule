@@ -6,3 +6,7 @@ services:
     restart: unless-stopped
     volumes:
       - ~/path/to/scripts:/usr/scripts
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    enviroment:
+      - script=YOUR_SCRIPT.py # replace YOUR_SCRIPT with name of your script placed in /scripts/ directory

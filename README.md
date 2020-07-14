@@ -5,24 +5,41 @@ pyrogram-schedule is docker container for arm64 (raspberry pi) based on python 3
 You can get docker image at the following location: [pawerak/pyrogram-schedule](https://hub.docker.com/r/pawerak/pyrogram-schedule).
 ## Installing
 ```
-docker pull pawerak/pyrogram-schedule:arm64
+docker pull pawerak/pyrogram-schedule:latest
 ```
 ## Running image
-To run container use command shown below.
+### First run
+For the first run docker will ceate persistence folder with ```config.ini``` file, which you should fill with your api ID and hash. Instruction [here](https://docs.pyrogram.org/intro/setup)
 ```
 docker run -d \
   --name=Telegram_BOT \
-  -e TZ=Europe/Warsaw \
   -v ~/path/to/scripts:/usr/scripts \
   --restart unless-stopped \
   pawerak/pyrogram-schedule
 ```
-If you mount volume, your login for telegram and scripts will persist container rebuild.
-## Configuration
+### Second run
+For the first run you will login to your telegram account use this command.
 ```
-docker exec -it <container_id> /bin/bash
+docker run -it \
+  --name=Telegram_BOT \
+  -v ~/path/to/scripts:/usr/scripts \
+  -e script=start.py \
+  --restart unless-stopped \
+  pawerak/pyrogram-schedule
 ```
-### Running scripts in background
+During first run you will perform authorization - please see [pyrogram documentation](https://docs.pyrogram.org/start/auth)
+
+### Third run
+To run container with your own script use command shown below.
 ```
-nohup python3 /usr/scripts/your_script.py &
+docker run -d \
+  --name=Telegram_BOT \
+  -e TZ=Europe/Warsaw \
+  -e script=YOUR_SCRIPT.py \
+  -v ~/path/to/scripts:/usr/scripts \
+  --restart unless-stopped \
+  pawerak/pyrogram-schedule
 ```
+Where ```YOUR_SCRIPT.py``` is the name of your script placed in ```/scripts``` directory.
+
+Alternatively, you can use [docker-compose](https://github.com/pawerak/pyrogram-schedule/blob/master/docker-compose.yaml).
