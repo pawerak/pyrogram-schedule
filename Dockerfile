@@ -19,6 +19,5 @@ RUN rm -frv ./requirements.txt
 RUN mkdir /usr/scripts
 COPY ./scripts/ /usr/scripts/
 VOLUME /usr/scripts
-
-ENV script=$script_name
-CMD ["python3", /usr/scripts/$script]
+WORKDIR /usr/scripts
+CMD ["python", "./main.py"]

@@ -2,11 +2,9 @@ version: '3'
 services:
   Telegram_Bot:
     container_name: Telegram_BOT
-    image: pawerak/pyrogram-schedule
+    image: pawerak/pyrogram-schedule:latest
     restart: unless-stopped
     volumes:
       - ~/path/to/scripts:/usr/scripts
-      - "/etc/timezone:/etc/timezone:ro"
-      - "/etc/localtime:/etc/localtime:ro"
     enviroment:
-      - script=YOUR_SCRIPT.py # replace YOUR_SCRIPT with name of your script placed in /scripts/ directory
+      - TZ=Europe/Warsaw
