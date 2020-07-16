@@ -9,25 +9,26 @@ docker pull pawerak/pyrogram-schedule:latest
 ```
 ## Running image
 ### First run
-For the first run docker will ceate persistence folder with ```config.ini``` file, which you should fill with your api ID and hash. Instruction [here](https://docs.pyrogram.org/intro/setup).
+For the first run docker will ceate persistence directory. 
 ```
-docker run -d \
+docker run -d --rm\
   --name=Telegram_BOT \
   -v ~/path/to/scripts:/usr/scripts \
-  --restart unless-stopped \
   pawerak/pyrogram-schedule
 ```
+After that you have to manualy copy ```config.ini``` file, which you should fill with your api ID and hash. Instruction [here](https://docs.pyrogram.org/intro/setup). You should also copy file ```start.py```.
 ### Second run
-For the first run you will login to your telegram account use this command.
+For the second run you will login to your telegram account use this command.
 ```
-docker run -it \
+docker run -it --rm \
   --name=Telegram_BOT \
   -v ~/path/to/scripts:/usr/scripts \
   -e script=start.py \
-  --restart unless-stopped \
   pawerak/pyrogram-schedule
 ```
-During first run you will perform authorization - please see [pyrogram documentation](https://docs.pyrogram.org/start/auth).
+During second run you will perform authorization - please see [pyrogram documentation](https://docs.pyrogram.org/start/auth).
+
+After entering confirmation code, you can ```exit``` from container.
 
 ### Third run
 To run container with your own script use command shown below.
@@ -40,5 +41,6 @@ docker run -d \
   --restart unless-stopped \
   pawerak/pyrogram-schedule
 ```
-Your main script, that will be run in container should be named **main**.py.
+Your main script, that will be run in container should be named **main.py**.
+
 Alternatively, you can use [docker-compose](https://github.com/pawerak/pyrogram-schedule/blob/master/docker-compose.yaml).

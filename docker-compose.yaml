@@ -8,3 +8,4 @@ services:
       - ~/path/to/scripts:/usr/scripts
     enviroment:
       - TZ=Europe/Warsaw
+      - script=main.py

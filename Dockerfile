@@ -16,8 +16,7 @@ RUN pip3 install --upgrade pip && \
     pip3 install --no-cache-dir -r requirements.txt
 
 RUN rm -frv ./requirements.txt
-RUN mkdir /usr/scripts
-COPY ./scripts/ /usr/scripts/
-VOLUME /usr/scripts
-WORKDIR /usr/scripts
-CMD ["python", "./main.py"]
+VOLUME /usr/scripts/
+WORKDIR /usr/scripts/
+ENV script test.py
+CMD python ${script}
